@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="พอร์ตโฟลิโอระดับพรีเมียมของ ปริวัฒน์ รอดกระจับ - นักพัฒนาซอฟต์แวร์และระบบเว็บ">
+    <title>Pariwat Rodkrachap | Systems & Web Developer</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* -----------------------------------------
+           03 | RESTRAINED COLOR SYSTEM (ระบบสีควบคุมเข้มงวด)
+        ----------------------------------------- */
+        :root {
+            --bg-obsidian: #050806;     /* ดำลุ่มลึก อมเขียวมืด */
+            --surface-forest: #0D1611;  /* เขียวฟอเรสต์เข้ม สำหรับการ์ดและเลเยอร์ */
+            --accent-gold: #D4AF37;     /* ทองแชมเปญ สำหรับเกรดเฉลี่ยและความเป็นเลิศ */
+            --accent-crimson: #9E2A2B;  /* แดงกำมะหยี่ สำหรับกิจกรรม อวท. และจุดนำสายตา */
+            --text-pure: #F3F4F3;       /* ขาวนวล สบายสายตา ไม่จ้าเกินไป */
+            --text-muted: #7A857E;      /* เทาอมเขียวหม่น สำหรับเนื้อหารอง */
+            
+            --font-editorial: 'Cormorant Garamond', serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --anim-whisper: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* 08 | Accessibility & Performance Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-obsidian);
+            color: var(--text-pure);
+            font-family: var(--font-sans);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 04 | HIERARCHY THAT BREATHES (พื้นที่ให้หายใจ) */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 5rem;
+        }
+
+        /* Navigation Bar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2.5rem 5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(5, 8, 6, 0.75);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.05);
+        }
+
+        .brand-logo {
+            font-family: var(--font-editorial);
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--text-pure);
+            text-decoration: none;
+        }
+
+        .brand-logo span {
+            color: var(--accent-crimson);
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: var(--anim-whisper);
+            margin-left: 3.5rem;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* 01 | Hero Section (จุดยืนที่ชัดเจน - Editorial Luxury) */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-wrapper {
+            max-width: 900px;
+        }
+
+        .badge-tag {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: var(--accent-gold);
+            margin-bottom: 2rem;
+            display: block;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-family: var(--font-editorial);
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 3rem;
+        }
+
+        h1 em {
+            font-style: italic;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .hero-intro {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 550px;
+            line-height: 1.8;
+            border-left: 2px solid var(--accent-crimson);
+            padding-left: 2rem;
+        }
+
+        /* Profile Showcase (Metrics & Details) */
+        .profile-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 6rem 0;
+            border-top: 1px solid rgba(122, 133, 126, 0.15);
+            border-bottom: 1px solid rgba(122, 133, 126, 0.15);
+            margin-bottom: 8rem;
+        }
+
+        .metric-card h2 {
+            font-family: var(--font-editorial);
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-card.fft h2 {
+            color: var(--accent-crimson);
+        }
+
+        .metric-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.5;
+        }
+
+        /* Core Technology Stack Section */
+        .section-headline {
+            font-family: var(--font-editorial);
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 4rem;
+        }
+
+        .section-headline span {
+            color: var(--accent-gold);
+        }
+
+        .tech-arsenal {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 6rem;
+            margin-bottom: 10rem;
+            align-items: center;
+        }
+
+        .tech-showcase-box {
+            background-color: var(--surface-forest);
+            padding: 4rem;
+            border: 1px solid rgba(214, 175, 55, 0.08);
+            position: relative;
+        }
+
+        .tech-showcase-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--accent-gold);
+        }
+
+        .tech-showcase-box h3 {
+            font-family: var(--font-editorial);
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-list {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .tech-tag {
+            padding: 0.6rem 1.2rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(122, 133, 126, 0.2);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: var(--text-pure);
+        }
+
+        /* 05 | Imagery with Intent (จำลองโครงสร้างชิ้นงานที่คัดสรรมาอย่างดี) */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6rem;
+            padding-bottom: 12rem;
+        }
+
+        .work-item {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .work-item:nth-child(even) {
+            margin-top: 8rem; /* สร้างเลย์เอาต์เหลื่อมล้ำสไตล์นิตยสารไฮเอนด์ */
+        }
+
+        .work-frame {
+            width: 100%;
+            aspect-ratio: 16/10;
+            background-color: var(--surface-forest);
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .work-visual {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(13,22,17,0.4) 0%, rgba(5,8,6,0.9) 100%);
+            transition: var(--anim-whisper);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* เอฟเฟกต์สะท้อนความหรูหราเมื่อโฮเวอร์ */
+        .work-item:hover .work-visual {
+            transform: scale(1.02);
+            background: linear-gradient(180deg, rgba(214,175,55,0.05) 0%, rgba(13,22,17,0.9) 100%);
+        }
+
+        .work-visual-tag {
+            font-family: var(--font-editorial);
+            font-size: 1.5rem;
+            color: rgba(214, 175, 55, 0.4);
+            letter-spacing: 2px;
+            font-style: italic;
+        }
+
+        .work-meta {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .work-title {
+            font-family: var(--font-editorial);
+            font-size: 2rem;
+            font-weight: 400;
+            transition: var(--anim-whisper);
+        }
+
+        .work-item:hover .work-title {
+            color: var(--accent-gold);
+        }
+
+        .work-category {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+
+        /* Footer Section */
+        footer {
+            padding: 6rem 0;
+            border-top: 1px solid rgba(122, 133, 126, 0.1);
+            text-align: center;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* 06 | MOTION THAT WHISPERS (เอฟเฟกต์อนิเมชันที่นุ่มนวลและเงียบเชียบ) */
+        .whisper-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--anim-whisper);
+        }
+
+        .whisper-reveal.reveal-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* -----------------------------------------
+           07 | MOBILE DESIGNED (ไม่ใช่แค่ย่อส่วน แต่จัดเลย์เอาต์ใหม่)
+        ----------------------------------------- */
+        @media (max-width: 992px) {
+            header {
+                padding: 2rem;
+            }
+            .container {
+                padding: 0 2rem;
+            }
+            nav a {
+                margin-left: 1.5rem;
+                font-size: 0.75rem;
+                letter-spacing: 1px;
+            }
+            .profile-metrics {
+                grid-template-columns: 1fr; /* ยุบรวมเป็นแถวเดี่ยวเพื่อให้อ่านง่ายบนมือถือ */
+                gap: 3rem;
+                padding: 4rem 0;
+            }
+            .tech-arsenal {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .works-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+            .work-item:nth-child(even) {
+                margin-top: 0;
+            }
+            h1 {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="brand-logo">PARIWAT<span>.</span>R</a>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#works">Selected Works</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        
+        <section class="hero-section">
+            <div class="hero-wrapper">
+                <span class="badge-tag whisper-reveal">Systems Logic & Web Craftsmanship</span>
+                <h1 class="whisper-reveal" style="transition-delay: 0.1s;">
+                    Turning complex logic into <em>immaculate</em> digital architecture.
+                </h1>
+                <div class="hero-intro whisper-reveal" style="transition-delay: 0.2s;">
+                    ผมคือ <strong>ปริวัฒน์ รอดกระจับ</strong> นักพัฒนาโปรแกรมสาย IT วัย 19 ปี ผู้หลงใหลในความแม่นยำและทรงประสิทธิภาพของภาษา C++ ควบคู่ไปกับการออกแบบและเนรมิตหน้าเว็บไซต์ระดับลักชัวรีด้วยภาษา HTML, CSS และ JavaScript
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="profile-metrics whisper-reveal">
+            <div class="metric-card">
+                <h2>ปวส. 2</h2>
+                <p>Information Technology<br>ที่ วิทยาลัยเทคโนโลยีสยามบริหารธุรกิจ</p>
+            </div>
+            <div class="metric-card">
+                <h2>3.78</h2>
+                <p>Academic Gold Standard<br>ผลการเรียนเฉลี่ยสะสมโดยประมาณ</p>
+            </div>
+            <div class="metric-card fft">
+                <h2>อวท.</h2>
+                <p>Leadership & Activist<br>องค์การนักวิชาชีพในอนาคตแห่งประเทศไทย</p>
+            </div>
+        </section>
+
+        <section class="tech-arsenal">
+            <div class="whisper-reveal">
+                <h2 class="section-headline">The Core <span>Engine</span></h2>
+                <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 2rem;">
+                    ด้วยพื้นฐานที่แข็งแกร่งจากภาษา C++ ทำให้ผมเข้าใจโครงสร้างการจัดการหน่วยความจำและตรรกะระดับลึก ส่งผลให้เมื่อผมก้าวเข้ามาพัฒนาเว็บแอปพลิเคชันด้วย Web Stack ทุกบรรทัดของโค้ดจึงถูกเขียนขึ้นอย่างประณีต รวดเร็ว และปราศจากส่วนเกินที่ไม่จำเป็น
+                </p>
+            </div>
+            <div class="tech-showcase-box whisper-reveal" style="transition-delay: 0.1s;">
+                <h3>Technical Arsenal</h3>
+                <div class="tech-list">
+                    <span class="tech-tag" style="border-color: var(--accent-gold);">C++ (Expertise)</span>
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3 / Grid / Flexbox</span>
+                    <span class="tech-tag">JavaScript (ES6+)</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="works">
+            <h2 class="section-headline whisper-reveal">Selected <span>Projects</span></h2>
+            
+            <div class="works-grid">
+                <a href="#" class="work-item whisper-reveal">
+                    <div class="work-frame">
+                        <div class="work-visual">
+                            <span class="work-visual-tag">// High Performance</span>
+                        </div>
+                    </div>
+                    <div class="work-meta">
+                        <h3 class="work-title">Advanced C++ Architecture</h3>
+                        <span class="work-category">Systems Application</span>
+                    </div>
+                </a>
+
+                <a href="#" class="work-item whisper-reveal" style="transition-delay: 0.1s;">
+                    <div class="work-frame">
+                        <div class="work-visual">
+                            <span class="work-visual-tag">&lt; Elegant Interface &gt;</span>
+                        </div>
+                    </div>
+                    <div class="work-meta">
+                        <h3 class="work-title">The Obsidian Showcase</h3>
+                        <span class="work-category">Premium Web Tech</span>
+                    </div>
+                </a>
+
+                <a href="#" class="work-item whisper-reveal">
+                    <div class="work-frame">
+                        <div class="work-visual">
+                            <span class="work-visual-tag"># Leadership / FFT</span>
+                        </div>
+                    </div>
+                    <div class="work-meta">
+                        <h3 class="work-title">FFT Initiative Platform</h3>
+                        <span class="work-category">Management & Activity</span>
+                    </div>
+                </a>
+
+                <a href="#" class="work-item whisper-reveal" style="transition-delay: 0.1s;">
+                    <div class="work-frame">
+                        <div class="work-visual">
+                            <span class="work-visual-tag">/* Algorithm 3.78 */</span>
+                        </div>
+                    </div>
+                    <div class="work-meta">
+                        <h3 class="work-title">Data Structures Lab</h3>
+                        <span class="work-category">Academic Project</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p class="footer-text">&copy; 2026 Pariwat Rodkrachap. Designed with Intentional Restraint.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealElements = document.querySelectorAll('.whisper-reveal');
+            
+            // ใช้ Intersection Observer ประสิทธิภาพสูงเพื่อให้แอนิเมชันทำงานนุ่มนวลตอน Scroll
+            const whisperObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal-active');
+                        // เมื่อแสดงผลเสร็จแล้วให้หยุดสังเกตเพื่อประหยัด RAM/CPU ของเบราว์เซอร์
+                        whisperObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,      /* เริ่มเล่นแอนิเมชันเมื่อองค์ประกอบโผล่พ้นหน้าจอมา 10% */
+                rootMargin: "0px 0px -40px 0px"
+            });
+
+            revealElements.forEach(element => {
+                whisperObserver.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
